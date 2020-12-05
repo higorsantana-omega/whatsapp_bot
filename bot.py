@@ -1,10 +1,11 @@
 from selenium import webdriver
 import time
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.keys import Keys
 
 driver = webdriver.Chrome(ChromeDriverManager().install())
 driver.get('https://web.whatsapp.com/')
-time.sleep(10)
+time.sleep(30)
 
 contacts = ['Bot']
 mensagem = 'Oi'
@@ -14,6 +15,15 @@ def search_contact(contacts):
     time.sleep(5)
     search_box.click()
     search_box.send_keys(contacts)
+    time.sleep(3)
+    search_box.send_keys(Keys.ENTER)
+
+def send_msg(mensagem):
+    search_box_msg = driver.find_element_by_xpath('//div[contains(@class, "copyable-text selectable-text")]')
+    search_box_msg[1].click()
+    time.sleep(2)
+    search_box_msg.send_keys(mensagem)
 
 for contact in contacts:
     search_contact(contacts)
+    send_msg(mensagem)
