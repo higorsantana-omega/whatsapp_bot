@@ -19,10 +19,11 @@ def search_contact(contacts):
     search_box.send_keys(Keys.ENTER)
 
 def send_msg(mensagem):
-    search_box_msg = driver.find_element_by_xpath('//div[contains(@class, "copyable-text selectable-text")]')
-    search_box_msg[1].click()
-    time.sleep(2)
+    search_box_msg = driver.find_elements_by_class_name('_1awRl')
+    time.sleep(5)
+    search_box_msg.click()
     search_box_msg.send_keys(mensagem)
+    search_box_msg.send_keys(Keys.ENTER)
 
 for contact in contacts:
     search_contact(contacts)
