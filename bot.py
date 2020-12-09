@@ -9,7 +9,7 @@ time.sleep(15)
 
 mensagem = input('Mensagem a ser enviada: ')
 
-contacts = ['amorzin']
+contacts = ['Bot']
 # mensagem = [].join(reb_msg)
 
 def search_contact(contacts):
@@ -24,10 +24,10 @@ def send_msg(mensagem):
     search_box_msg = driver.find_elements_by_xpath('//div[contains(@class, "copyable-text selectable-text")]')
     time.sleep(3)
     search_box_msg[1].click()
-    for i in range(125):
+    for i in range(10):
         search_box_msg[1].send_keys(mensagem)
         search_box_msg[1].send_keys(Keys.ENTER)
 
 for contact in contacts:
-    search_contact(contacts)
+    search_contact(contact)
     send_msg(mensagem)
